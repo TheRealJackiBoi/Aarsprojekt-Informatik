@@ -22,8 +22,48 @@ async function getData(){
    console.log(totalCases);   
    console.log(dates);   
 }
-getData()
 
 
 
+chartIt();
+async function chartIt(){
+   await getData();
+   const ctx = document.getElementById('totalCasesChart').getContext('2d');
+   const totalCasesChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+            labels: dates,
+            datasets: [{
+               label: 'Total Cases of Corona-Virus',
+               data: totalCases,
+               backgroundColor:'rgba(244, 247, 118, .6)',
+               borderColor: 'rgba(153, 153, 153, .6)',
+               borderWidth: 1,
+               fill: true
+            }]
+      },
+      options: {
+            scales: {
+               yAxes: [{
+                  ticks: {
+                        beginAtZero: true,
+                        stepSize: 100000,
+                        max: 6000000
+                  }
+               }]
+            },
+            hover:{
+                
+            },
+            maintainAspectRatio: false,
+            responsive: true,
+            backgroundColor: 'rgba(244, 247, 118, 1)'
+      }
+   });
+}
+
+
+
+
+   
 
