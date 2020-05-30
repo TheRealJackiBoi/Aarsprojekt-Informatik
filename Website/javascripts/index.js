@@ -60,6 +60,7 @@ async function chartIt(){
             backgroundColor: 'rgba(244, 247, 118, 1)'
       }
    });
+    console.log('created');
 }
 
 
