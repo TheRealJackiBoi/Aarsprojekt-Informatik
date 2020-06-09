@@ -25,14 +25,13 @@
 	<?php
 		// Initialize a file URL to the variable 
 		$url = 'https://covid.ourworldindata.org/data/owid-covid-data.csv'; 
-		 
-		$file_name = 'corona-data.csv'; 
+		
+		// Use basename() function to return the base name of file  
+		$file_name = './data/corona-data.csv';  
 		
 		// Use file_get_contents() function to get the file 
 		// from url and use file_put_contents() function to 
-		// save the file by using base name 
-		if(file_put_contents( $file_name, file_get_contents($url))) { 
-		}
+		file_put_contents( $file_name, file_get_contents($url)) 
 	?>
 
 
@@ -301,11 +300,13 @@
 	<option value="VGB">Virgin Islands, British</option>
 	<option value="VIR">Virgin Islands, U.S.</option>
 	<option value="WLF">Wallis and Futuna</option>
+	<option value="owid_wrl">World</option>
 	<option value="ESH">Western Sahara</option>
 	<option value="YEM">Yemen</option>
 	<option value="ZMB">Zambia</option>
 	<option value="ZWE">Zimbabwe</option>
-    </select>
+	</select>
+	<button typr="button" id="submit" name="submit" value="select" class="btn btn-primary">Select</button>
   </form>
 </div>
 </div>

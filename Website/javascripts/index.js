@@ -16,16 +16,17 @@ async function deleteData(){
 async function getData(){
     const response = await fetch('./data/corona-data.csv');
     const data = await response.text();
-    console.log(data);
-
+    totalCases = [];
+    newCases = [];
+    dates = []
    const table = data.split('\n').slice(1);
    table.forEach(row =>{
       const columns = row.split(',');
       const isoCode = columns[0];
       const location = columns[1];
-      const date = columns[2];
-      const total = columns[3];
-      const newInfect = columns[4];
+      const date = columns[3];
+      const total = columns[4];
+      const newInfect = columns[5];
       
       
       countries.forEach(country => {
@@ -38,10 +39,7 @@ async function getData(){
      });
 
       
-   });
-   console.log(totalCases);   
-   console.log(dates);
-   console.log(newCases);  
+   }); 
 }
 
 
