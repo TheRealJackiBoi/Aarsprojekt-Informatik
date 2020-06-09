@@ -10,8 +10,7 @@
     <!--Bootstrap css-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <!--Scripts-->
-    <script src="javascripts/index.js"></script>
+    
 
     <!--Bootstrap scripts-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -64,8 +63,9 @@
   <div class="form-row align-items-center container-fluid justify-content-center">
 	<div class="form-group col-auto my-1">
     <label for="searchIso" class="label">Select the country you want data for</label>
-    <select name="searchIso" id="searchIso" class="form-control" >
-      <!--Options kopieret fra: -->
+    <select name="searchIso" id="searchIso" onchange="chartIt(this.value);" class="form-control" >
+	  <!--Options kopieret fra: -->
+	  	<option value="OWID_WRL" selected>World</option>
       	<option value="AFG">Afghanistan</option>
 		<option value="ALA">Åland Islands</option>
 		<option value="ALB">Albania</option>
@@ -311,20 +311,16 @@
 		<option value="VGB">Virgin Islands, British</option>
 		<option value="VIR">Virgin Islands, U.S.</option>
 		<option value="WLF">Wallis and Futuna</option>
-		<option value="owid_wrl">World</option>
 		<option value="ESH">Western Sahara</option>
 		<option value="YEM">Yemen</option>
 		<option value="ZMB">Zambia</option>
 		<option value="ZWE">Zimbabwe</option>
 	</select>
 	</div>
-	<div class="col-auto my-1">
-      	<button type="submit" id="submit" class="btn btn-primary" style="margin-top: 30px;">Submit</button>
-    </div>
-
 	</div>
 </form>
-
+<!--Scripts-->
+<script src="javascripts/index.js"></script>
 </div>
 <div class="container container-fluid justify-content-center">
 

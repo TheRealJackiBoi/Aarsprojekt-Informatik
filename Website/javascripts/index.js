@@ -1,24 +1,27 @@
 //const apiUrl = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 
+var coronaChart = null;
+
+//var searchIso = this.document.getElementById("searchIso").value;
+
 //forskellige arrays til graferne
 var totalCases = [];
 var dates = [];
 var newCases = [];
 var countries = [[]];
 //Den iso kode der bliver valgt
-var searchIso = "OWID_WRL";
+/*document.getElementById('searchIso').addEventListener('change', function() {
+   searchIso = this.value;
+ });*/
 
-
-async function deleteData(){
-   
-}
-
-async function getData(){
+async function getData(value){
+   searchIso = value;
     const response = await fetch('./data/corona-data.csv');
     const data = await response.text();
     totalCases = [];
     newCases = [];
     dates = []
+
    const table = data.split('\n').slice(1);
    table.forEach(row =>{
       const columns = row.split(',');
@@ -37,18 +40,17 @@ async function getData(){
            newCases.push(newInfect);
          }
      });
-
-      
    }); 
+   console.log(dates, totalCases, newCases)
 }
 
 
-
 chartIt();
-async function chartIt(){
-   await getData();
+async function chartIt(hej){
+   await getData(hej);
+   coronaChart = null;
    const ctx = document.getElementById('totalCasesChart').getContext('2d');
-   const totalCasesChart = new Chart(ctx, {
+   coronaChart = new Chart(ctx, {
       type: 'line',
       data: {
             labels: dates,
@@ -92,6 +94,9 @@ async function chartIt(){
    });
     console.log('created');
 }
+
+
+
 
 
 
