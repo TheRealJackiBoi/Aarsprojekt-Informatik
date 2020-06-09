@@ -1,9 +1,15 @@
 //const apiUrl = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 
+//forskellige arrays til graferne
 var totalCases = [];
 var dates = [];
+var newCases = [];
+var countries = [[]];
+//Den iso kode der bliver valgt
+var searchIso = "OWID_WRL"
+
 async function getData(){
-    const response = await fetch('world.csv');
+    const response = await fetch('./data/corona-data.csv');
     const data = await response.text();
     console.log(data);
 
@@ -14,13 +20,23 @@ async function getData(){
       const location = columns[1];
       const date = columns[2];
       const total = columns[3];
-      console.log(date, total);
+      const newInfect = columns[4];
       
-      dates.push(date)
-      totalCases.push(total);
+      
+      countries.forEach(country => {
+         if (searchIso === isoCode){
+           country.push(row);
+           dates.push(date);
+           totalCases.push(total);
+           newCases.push(newInfect);
+         }
+     });
+
+      
    });
    console.log(totalCases);   
-   console.log(dates);   
+   console.log(dates);
+   console.log(newCases);  
 }
 
 
@@ -36,12 +52,23 @@ async function chartIt(){
             datasets: [{
                label: 'Total Cases of Corona-Virus',
                data: totalCases,
+               order: 2,
                backgroundColor:'rgba(244, 247, 118, .6)',
                borderColor: 'rgba(153, 153, 153, .6)',
                borderWidth: 1,
                fill: true
-            }]
-      },
+               }, 
+               {
+               label: 'New cases of Corona-Virus',
+               data: newCases,
+               order: 1,
+               backgroundColor:'rgba(255, 0, 0, .6)',
+               borderColor: 'rgba(153, 153, 153, .6)',
+               borderWidth: 1,
+               fill: true
+               }],
+               
+            },
       options: {
             scales: {
                yAxes: [{
