@@ -330,9 +330,9 @@
 
 <div class="row">
 <!--Card til at have graf i-->
-<card class="card bg-light col-lg-6 col-md-12 col-xs-12 container-fluid justify-content-center ">
+<card class="card bg-light col-lg-12 col-md-12 col-xs-12 container-fluid justify-content-center ">
   <div class="card-body ">
-  <canvas id="totalCasesChart" width="400" height="400"></canvas>
+  <canvas id="totalCasesChart" width="600" height="600"></canvas>
   </div>
 </card>
 </div>

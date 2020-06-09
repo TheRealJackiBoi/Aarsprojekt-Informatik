@@ -65,14 +65,14 @@ async function chartIt(){
                label: 'New cases of Corona-Virus',
                data: newCases,
                order: 1,
+               fill: false,
+               borderColor: 'rgba(255, 0, 0, .6)',
                backgroundColor:'rgba(255, 0, 0, .6)',
-               borderColor: 'rgba(153, 153, 153, .6)',
-               borderWidth: 1,
-               fill: true
+               borderWidth: 1
                }],
                
             },
-      options: {
+      options:{
             scales: {
                yAxes: [{
                   ticks: {
