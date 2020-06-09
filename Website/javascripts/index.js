@@ -6,7 +6,12 @@ var dates = [];
 var newCases = [];
 var countries = [[]];
 //Den iso kode der bliver valgt
-var searchIso = "OWID_WRL"
+var searchIso = "OWID_WRL";
+
+
+async function deleteData(){
+   
+}
 
 async function getData(){
     const response = await fetch('./data/corona-data.csv');
