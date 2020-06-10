@@ -1,7 +1,6 @@
 //const apiUrl = "https://covid.ourworldindata.org/data/owid-covid-data.csv"
 
-var coronaChart = null;
-
+var chart = null;
 //var searchIso = this.document.getElementById("searchIso").value;
 
 //forskellige arrays til graferne
@@ -9,13 +8,10 @@ var totalCases = [];
 var dates = [];
 var newCases = [];
 var countries = [[]];
-//Den iso kode der bliver valgt
-/*document.getElementById('searchIso').addEventListener('change', function() {
-   searchIso = this.value;
- });*/
+var searchIso = "OWID_WRL";
 
-async function getData(value){
-   searchIso = value;
+
+async function getData(){
     const response = await fetch('./data/corona-data.csv');
     const data = await response.text();
     totalCases = [];
@@ -46,11 +42,10 @@ async function getData(value){
 
 
 chartIt();
-async function chartIt(hej){
-   await getData(hej);
-   coronaChart = null;
-   const ctx = document.getElementById('totalCasesChart').getContext('2d');
-   coronaChart = new Chart(ctx, {
+async function chartIt(){
+   await getData();
+   var ctx = document.getElementById('totalCasesChart').getContext('2d');
+   chart = new Chart(ctx, {
       type: 'line',
       data: {
             labels: dates,
@@ -58,29 +53,18 @@ async function chartIt(hej){
                label: 'Total Cases of Corona-Virus',
                data: totalCases,
                order: 2,
-               backgroundColor:'rgba(244, 247, 118, .6)',
-               borderColor: 'rgba(153, 153, 153, .6)',
-               borderWidth: 1,
-               fill: true
-               }, 
-               {
-               label: 'New cases of Corona-Virus',
-               data: newCases,
-               order: 1,
-               fill: false,
+               backgroundColor:'rgba(200, 0, 0, .2)',
                borderColor: 'rgba(255, 0, 0, .6)',
-               backgroundColor:'rgba(255, 0, 0, .6)',
-               borderWidth: 1
-               }],
-               
-            },
+               borderWidth: 1,
+               fill: true}]
+   },
       options:{
             scales: {
                yAxes: [{
                   ticks: {
                         beginAtZero: true,
-                        stepSize: 100000,
-                        max: 6000000
+                        stepSize: 0
+                        
                   }
                }]
             },
@@ -95,8 +79,20 @@ async function chartIt(hej){
     console.log('created');
 }
 
+function removeData(chart) {
+   chart.data.labels.pop();
+   chart.data.datasets.forEach((dataset) => {
+       dataset.data.pop();
+   });
+}
 
-
+async function updateChart(chart, theDates, theData){
+   removeData(chart);
+   await getData();
+   chart.data.labels = theDates;
+   chart.data.datasets[0].data = theData;
+   await chart.update();
+}
 
 
 
