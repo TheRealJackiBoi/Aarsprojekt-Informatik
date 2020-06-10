@@ -62,12 +62,12 @@
     <p  class="label text-white text-center">Select the country you want data for </br>ps. double-click</p>
 	</div>
 	<div class="row align-items-center container-fluid justify-content-center" style="margin: 10px;">
-	<button id="worldbtn" type="button" class="btn btn-dark" onClick="searchIso = 'OWID_WRL'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);" style="margin-right: 10px;"> World</button>
-	<button id="denbtn" type="button" class="btn btn-dark" onClick="searchIso = 'DNK'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Denmark</button>
-	<button id="gbbtn" type="button" class="btn btn-dark" onClick="searchIso = 'GBR'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">United Kingdom</button>
-	<button id="chinabtn" type="button" class="btn btn-dark" onClick="searchIso = 'CHN'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">China</button>
-	<button id="itabtn" type="button" class="btn btn-dark" onClick="searchIso = 'ITA'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Italy</button>
-	<button id="usabtn" type="button" class="btn btn-dark" onClick="searchIso = 'USA'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">U.S.A</button>
+	<button id="worldbtn" type="button" class="btn btn-dark" onClick="searchIso = 'OWID_WRL'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);" style="margin-right: 10px;"> World</button>
+	<button id="denbtn" type="button" class="btn btn-dark" onClick="searchIso = 'DNK'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Denmark</button>
+	<button id="gbbtn" type="button" class="btn btn-dark" onClick="searchIso = 'GBR'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);"style="margin-right: 10px;">United Kingdom</button>
+	<button id="chinabtn" type="button" class="btn btn-dark" onClick="searchIso = 'CHN'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);"style="margin-right: 10px;">China</button>
+	<button id="itabtn" type="button" class="btn btn-dark" onClick="searchIso = 'ITA'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Italy</button>
+	<button id="usabtn" type="button" class="btn btn-dark" onClick="searchIso = 'USA'; updateChart(chart, dates, totalCases, totalDe, loca, toCa, newCases, toDe);"style="margin-right: 10px;">U.S.A</button>
 	</div>
 
 	<div class="row align-items-center container-fluid justify-content-center col-8" style="margin-top: 10px;">

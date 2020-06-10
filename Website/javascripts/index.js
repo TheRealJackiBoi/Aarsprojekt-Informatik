@@ -20,7 +20,8 @@ async function getData(){
     const data = await response.text();
     totalCases = [];
     newCases = [];
-    dates = []
+    dates = [];
+    totalDe = [];
 
    const table = data.split('\n').slice(1);
    table.forEach(row =>{
@@ -46,7 +47,7 @@ async function getData(){
          }
      });
    }); 
-   console.log(dates, totalCases, newCases)
+   console.log(dates, totalCases, newCases, totalDe)
 }
 
 
@@ -61,18 +62,16 @@ async function chartIt(){
             datasets: [{
                label: 'Total Cases of Corona-Virus',
                data: totalCases,
-               order: 2,
                backgroundColor:'rgba(244, 247, 118, .6)',
-               borderColor: 'rgba(153, 153, 153, .6)',
+               borderColor: 'rgba(153, 153, 153, .2)',
                borderWidth: 1,
                fill: true
             }, 
                {
                label: 'Total Deaths',
                data: totalDe,
-               order: 1,
-               backgroundColor:'rgba(255, 0, 0, .6)',
-               borderColor: 'rgba(153, 153, 153, .6)',
+               backgroundColor:'rgba(255, 0, 0, .4)',
+               borderColor: 'rgba(153, 153, 153, .2)',
                borderWidth: 1,
                fill: true
                }]
@@ -105,12 +104,14 @@ function removeData(chart) {
    });
 }
 
-async function updateChart(chart, theDates, theData, name, infe, ne, de){
+async function updateChart(chart, theDates, theData, theSData, name, infe, ne, de){
    removeData(chart);
    await getData();
    chart.data.labels = theDates;
    chart.data.datasets[0].data = theData;
+   chart.data.datasets[1].data = theSData;
    await chart.update();
+
    var span = document.getElementById('selectedc');
 
    var inf = document.getElementById('totalCasesSpan');
@@ -122,6 +123,7 @@ async function updateChart(chart, theDates, theData, name, infe, ne, de){
    inf.textContent = infe;
    newca.textContent = ne;
    dead.textContent = de;
+   
 }
 
 
