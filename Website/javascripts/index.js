@@ -6,9 +6,12 @@ var chart = null;
 //forskellige arrays til graferne
 var totalCases = [];
 var dates = [];
-var newCases = [];
+var newCases = null;
+var toCa = null;
+var toDe = null;
 var countries = [[]];
 var searchIso = "OWID_WRL";
+var loca = null;
 
 
 async function getData(){
@@ -22,10 +25,11 @@ async function getData(){
    table.forEach(row =>{
       const columns = row.split(',');
       const isoCode = columns[0];
-      const location = columns[1];
+      const location = columns[2];
       const date = columns[3];
       const total = columns[4];
       const newInfect = columns[5];
+      const totalDeaths = columns[7];
       
       
       countries.forEach(country => {
@@ -33,7 +37,10 @@ async function getData(){
            country.push(row);
            dates.push(date);
            totalCases.push(total);
-           newCases.push(newInfect);
+           newCases = newInfect;
+           toCa = total;
+           toDe = totalDeaths;
+           loca = location;
          }
      });
    }); 
@@ -86,14 +93,24 @@ function removeData(chart) {
    });
 }
 
-async function updateChart(chart, theDates, theData){
+async function updateChart(chart, theDates, theData, name, infe, ne, de){
    removeData(chart);
    await getData();
    chart.data.labels = theDates;
    chart.data.datasets[0].data = theData;
    await chart.update();
-}
+   var span = document.getElementById('selectedc');
 
+   var inf = document.getElementById('totalCasesSpan');
+   var newca = document.getElementById('newCasesSpan');
+   var dead = document.getElementById('totalDeathsSpan');
+
+   span.textContent = name;
+
+   inf.textContent = infe;
+   newca.textContent = ne;
+   dead.textContent = de;
+}
 
 
 

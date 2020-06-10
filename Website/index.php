@@ -59,20 +59,27 @@
 <!--Form til at vælge hvilket dataen skal komme fra-->
 <div class="container container-fluid justify-content-center">
   
-  
   <div class="row align-items-center container-fluid justify-content-center">
 	<div class="group col-auto my-1">
     <p  class="label text-white text-center">Select the country you want data for </br>ps. double-click</p>
 	</div>
-	<div class="row align-items-center container-fluid justify-content-center " style="margin: 10px;">
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'OWID_WRL'; updateChart(chart, dates, totalCases);" style="margin-right: 10px;"> World</button>
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'DNK'; updateChart(chart, dates, totalCases);"style="margin-right: 10px;"> Denmark</button>
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'GBR'; updateChart(chart, dates, totalCases);"style="margin-right: 10px;"> Great Britain</button>
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'CHN'; updateChart(chart, dates, totalCases);"style="margin-right: 10px;"> China</button>
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'ITA'; updateChart(chart, dates, totalCases);"style="margin-right: 10px;"> Italy</button>
-	<button type="button" class="btn btn-dark" onClick="searchIso = 'USA'; updateChart(chart, dates, totalCases);"style="margin-right: 10px;"> U.S.A</button>
-	
+	<div class="row align-items-center container-fluid justify-content-center" style="margin: 10px;">
+	<button id="worldbtn" type="button" class="btn btn-dark" onClick="searchIso = 'OWID_WRL'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);" style="margin-right: 10px;"> World</button>
+	<button id="denbtn" type="button" class="btn btn-dark" onClick="searchIso = 'DNK'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Denmark</button>
+	<button id="gbbtn" type="button" class="btn btn-dark" onClick="searchIso = 'GBR'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">United Kingdom</button>
+	<button id="chinabtn" type="button" class="btn btn-dark" onClick="searchIso = 'CHN'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">China</button>
+	<button id="itabtn" type="button" class="btn btn-dark" onClick="searchIso = 'ITA'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">Italy</button>
+	<button id="usabtn" type="button" class="btn btn-dark" onClick="searchIso = 'USA'; updateChart(chart, dates, totalCases, loca, toCa, newCases, toDe);"style="margin-right: 10px;">U.S.A</button>
 	</div>
+
+	<div class="row align-items-center container-fluid justify-content-center col-8" style="margin-top: 10px;">
+	<card class="card bg-dark col-10 text-center">
+	<div class="card-body">
+	<h2 id="selectedc" class="text-white"></h2>
+	</div>
+	</card>
+	</div>
+
 	</div>
 
 
@@ -83,7 +90,7 @@
 
 <div class="row">
 <!--Card til at have graf i-->
-<card class="card bg-light col-lg-12 col-md-12 col-xs-12 container-fluid justify-content-center ">
+<card class="card bg-light col-lg-12 col-md-12 col-xs-12 container-fluid justify-content-center " style="margin-top: 10px;">
   <div class="card-body ">
   <canvas id="totalCasesChart" width="600" height="600"></canvas>
   </div>
@@ -91,9 +98,23 @@
 </div>
 </div>
 
-<!--Footer med info i-->
-<footer>
+<div class="row row align-items-center container-fluid justify-content-center" style="margin-bottom: 20px;">
+<card class="card text-center bg-warning container-fluid justify-content-center col-3" style="margin-top: 10px;">
+<div class="card-body ">
+	<p>Total Cases: <span id="totalCasesSpan">af</span></p>		
+</div>
+</card>
+<card class="card text-center bg-warning container-fluid justify-content-center col-3" style="margin-top: 10px;">
+<div class="card-body ">
+	<p>New Cases: <span id="newCasesSpan">af</span></p>	
+</div>
+</card>
+<card class="card text-center bg-warning container-fluid justify-content-center col-3" style="margin-top: 10px;">
+<div class="card-body ">
+	<p>Total Deaths: <span id="totalDeathsSpan">af</span></p>		
+</div>
+</card>
+</div>
 
-</footer>
 </body>
 </html> 
