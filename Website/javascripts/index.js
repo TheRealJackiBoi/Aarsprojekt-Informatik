@@ -9,6 +9,7 @@ var dates = [];
 var newCases = null;
 var toCa = null;
 var toDe = null;
+var totalDe = [];
 var countries = [[]];
 var searchIso = "OWID_WRL";
 var loca = null;
@@ -29,7 +30,7 @@ async function getData(){
       const date = columns[3];
       const total = columns[4];
       const newInfect = columns[5];
-      const totalDeaths = columns[7];
+      const totalDeaths = columns[6];
       
       
       countries.forEach(country => {
@@ -37,6 +38,7 @@ async function getData(){
            country.push(row);
            dates.push(date);
            totalCases.push(total);
+           totalDe.push(totalDeaths);
            newCases = newInfect;
            toCa = total;
            toDe = totalDeaths;
@@ -60,11 +62,21 @@ async function chartIt(){
                label: 'Total Cases of Corona-Virus',
                data: totalCases,
                order: 2,
-               backgroundColor:'rgba(200, 0, 0, .2)',
-               borderColor: 'rgba(255, 0, 0, .6)',
+               backgroundColor:'rgba(244, 247, 118, .6)',
+               borderColor: 'rgba(153, 153, 153, .6)',
                borderWidth: 1,
-               fill: true}]
-   },
+               fill: true
+            }, 
+               {
+               label: 'Total Deaths',
+               data: totalDe,
+               order: 1,
+               backgroundColor:'rgba(255, 0, 0, .6)',
+               borderColor: 'rgba(153, 153, 153, .6)',
+               borderWidth: 1,
+               fill: true
+               }]
+            },
       options:{
             scales: {
                yAxes: [{
