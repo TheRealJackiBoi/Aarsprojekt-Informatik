@@ -29,9 +29,9 @@ async function getData(){
       const isoCode = columns[0];
       const location = columns[2];
       const date = columns[3];
-      const total = columns[4];
-      const newInfect = columns[5];
-      const totalDeaths = columns[6];
+      const total = Math.floor(columns[4]);
+      const newInfect = Math.floor(columns[5]);
+      const totalDeaths = Math.floor(columns[6]);
       
       
       countries.forEach(country => {
